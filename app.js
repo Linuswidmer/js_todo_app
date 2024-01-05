@@ -1,15 +1,16 @@
 // app.js
 
 document.addEventListener("DOMContentLoaded", function () {
-    const app = document.getElementById("app");
+
+	const app = document.getElementById("app");
 
 	// document.title = "Javascript is cool!";
 	const formContainer = document.createElement("div");
-    formContainer.classList.add("container", "mt-4");
+	formContainer.classList.add("container", "mt-4");
 
     // Create input for new tasks
-    const taskInput = document.createElement("input");
-    taskInput.type = "text";
+	const taskInput = document.createElement("input");
+	taskInput.type = "text";
     taskInput.placeholder = "Add a new task";
 
     // Create button to add tasks
@@ -19,8 +20,8 @@ document.addEventListener("DOMContentLoaded", function () {
     // Create ul element to hold tasks
     const taskList = document.createElement("ul");
 	const task = document.createElement("li");
-	task.textContent = "I can pre generate tasks!";
-	taskList.appendChild(task);
+	// task.textContent = "I can pre generate tasks!";
+	// taskList.appendChild(task);
 
     // Append input, button, and ul to the app div
     app.appendChild(taskInput);
