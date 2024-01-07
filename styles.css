@@ -2,12 +2,6 @@
     text-decoration: line-through;
 }
 
-.task-table th,
-.task-table td {
-	text-align: left;
-	padding: 10px;
-}
-
 .fixed-width {
 	width: 150px; /* Set your desired fixed width */
   }

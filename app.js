@@ -52,13 +52,13 @@ document.addEventListener("DOMContentLoaded", function () {
 	// Create and style header cells with grey background
 	const titleHeaderCell = document.createElement("th");
 	titleHeaderCell.textContent = "Title";
-	titleHeaderCell.classList.add("bg-secondary", "text-light", "fixed-width");
+	titleHeaderCell.classList.add("text-dark", "fixed-width");
 	titleHeaderCell.style.width = "30%";
 	headerRow.appendChild(titleHeaderCell);
 
 	const descriptionHeaderCell = document.createElement("th");
 	descriptionHeaderCell.textContent = "Description";
-	descriptionHeaderCell.classList.add("bg-secondary", "text-light", "fixed-width");	
+	descriptionHeaderCell.classList.add("text-dark", "fixed-width");
 	descriptionHeaderCell.style.width = "70%";
 	headerRow.appendChild(descriptionHeaderCell);
 
@@ -76,31 +76,40 @@ document.addEventListener("DOMContentLoaded", function () {
     const tableBody = document.createElement("tbody");
     taskTable.appendChild(tableBody);
 
-    addButton.addEventListener("click", function () {
-        const taskText = taskTitleInput.value.trim();
+    addButton.addEventListener("click", addTask);
+
+	document.addEventListener("keypress", function (event) {
+		if (event.key === "Enter") {
+			addTask();
+		}
+	});
+
+	function addTask() {
+		const taskText = taskTitleInput.value.trim();
 		const taskDescription = taskInputDescription.value.trim();
-        if (taskText !== "") {
-            const taskRow = document.createElement("tr");
-
-            // Add title column
-            const titleColumn = document.createElement("td");
-            titleColumn.textContent = taskText;
-            taskRow.appendChild(titleColumn);
-
-            // Add description column (empty for now)
-            const descriptionColumn = document.createElement("td");
+	
+		if (taskText !== "") {
+			const taskRow = document.createElement("tr");
+	
+			// Add title column
+			const titleColumn = document.createElement("td");
+			titleColumn.textContent = taskText;
+			taskRow.appendChild(titleColumn);
+	
+			// Add description column (empty for now)
+			const descriptionColumn = document.createElement("td");
 			descriptionColumn.textContent = taskDescription;
-            taskRow.appendChild(descriptionColumn);
-
-            // Append row to the table body
-            tableBody.appendChild(taskRow);
-
-            taskRow.addEventListener("click", function () {
-                taskRow.classList.toggle("completed");
-            });
-
-            taskTitleInput.value = "";
+			taskRow.appendChild(descriptionColumn);
+	
+			// Append row to the table body
+			tableBody.appendChild(taskRow);
+	
+			taskRow.addEventListener("click", function () {
+				taskRow.classList.toggle("completed");
+			});
+	
+			taskTitleInput.value = "";
 			taskInputDescription.value = "";
-        }
-    });
+		}
+	}
 });
